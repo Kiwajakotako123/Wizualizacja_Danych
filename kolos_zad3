@@ -1,0 +1,21 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+
+data = pd.read_csv('wyniki.csv',sep=';',index_col=0,encoding="UTF-8")
+procent=data['Liczba kopert zwrotnych, w których nie było oświadczenia o osobistym i tajnym oddaniu głosu']
+uprawnieni=data["Liczba wyborców uprawnionych do głosowania"]
+print(data.at[uprawnieni.idxmax(),'Województwo'])
+kandydaci1 = data.iloc[13,range(23,34)]
+print(kandydaci1)
+
+
+print('-----')
+oboje=data.loc[:,['Andrzej Sebastian DUDA','Rafał Kazimierz TRZASKOWSKI']]
+print(oboje)
+oboje.index=data['Województwo'].values
+
+
+oboje.plot.bar()
+plt.show()
