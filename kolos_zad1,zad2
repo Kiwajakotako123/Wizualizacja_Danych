@@ -1,0 +1,51 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import math
+
+data = pd.read_csv('wyniki.csv',sep=';',index_col=0,encoding="UTF-8")
+cwiczenie1=pd.DataFrame(
+    [['Anna',21,'K',65,179,'NIE'],
+    ['Zofia',40,'K',80,179,'TAK'],
+    ['Sylwia',13,'K',64,151,'NIE'],
+    ['Katarzyna',31,'K',74,177,'TAK'],
+    ['Teresa',34,'K',74,170,'NIE'],
+    ['Tomasz',14,'M',61,157,'TAK'],
+    ['Cezary',13,'M',66,151,'NIE'],
+    ['Zenon',28,'M',61,153,'TAK'],
+    ['Filip',20,'M',69,160,'NIE'],
+    ['Adrian',15,'M',77,160,'TAK']],
+    index = [0,1,2,3,4,5,6,7,8,9],
+    columns = ['Imiona','Wiek','Plec','Waga','Wzrost','Okulary'])
+okularnicy=cwiczenie1[cwiczenie1.Okulary == 'TAK']
+print(cwiczenie1)
+print(okularnicy)
+print('----')
+print(len((okularnicy[okularnicy.Plec == 'K']).index))
+print('----')
+tabelazimionamiowzroscie160180=cwiczenie1[cwiczenie1['Wzrost'] >= 160]
+tabelazimionamiowzroscie160180=tabelazimionamiowzroscie160180[tabelazimionamiowzroscie160180['Wzrost'] <= 180]
+tabelazimionamiowzroscie160180=tabelazimionamiowzroscie160180.Imiona
+print(tabelazimionamiowzroscie160180)
+print('----')
+cwiczenie1['bmi'] = round(( cwiczenie1.Waga / ((cwiczenie1.Wzrost/100)**2) ),2)
+print(cwiczenie1)
+bmi=cwiczenie1.bmi
+print('----')
+chlopywokluarach=okularnicy[okularnicy['Plec'] == 'M']
+
+sredniawiekumeszczyznwokularach = chlopywokluarach['Wiek'].mean()
+print(sredniawiekumeszczyznwokularach)
+print(chlopywokluarach)
+print('----')
+
+babybezokularow=cwiczenie1.query('Plec=="K" & Okulary == "NIE"')
+print(babybezokularow)
+print('----')
+
+x=np.linspace(0,2)
+plt.plot(x,np.exp(x),'blue',label="e^x")
+plt.plot(x,x**2,'green',label="x^2")
+plt.legend(title='Wykres')
+plt.show()
+print('----')
