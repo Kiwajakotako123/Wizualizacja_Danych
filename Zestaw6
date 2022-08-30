@@ -1,0 +1,56 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(6)
+y1 = np.array([36,38,20,23,37,34])
+y2 = np.array([-15, -10, -16, -22, -20, -29])
+m = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec"]
+plt.bar(x, y1, color="forestgreen", label="X")
+plt.bar(x, y2, color="darkred", label="Y")
+plt.title("Wykres zmian X i Y")
+plt.legend()
+plt.xticks(x, m, rotation=35)
+plt.tight_layout()
+plt.savefig("zad1_zes6.png")
+plt.show()
+#
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("uczniowie6.xlsx")
+rok = dane["Rok"]
+wart = dane["Wartość"]
+plt.plot(rok, wart, color="gray", linewidth=3)
+plt.annotate(xy=[2015, 600000], text="14:35")
+plt.xticks(rok, rok)
+plt.xlabel("Rok")
+plt.ylabel("Wartości")
+plt.title("Dane o uczniach w Polsce w latach 2015-2019")
+plt.tight_layout()
+plt.savefig("zad2_zes6.jpg")
+plt.show()
+#
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("rod6.xlsx", header=None).T
+dane2 = dane.iloc[1:, :]
+dane2.columns =  dane.iloc[0,:]
+dane2["Rok"] = pd.Series(dane2["Rok"], dtype=int)
+dane2["Wartosc"] = pd.Series(dane2["Wartosc"], dtype=int)
+dzialki = dane2[dane2["Rodzaje terenu"] == "działki"]
+powdzi = dzialki[dzialki["Ogrody"] == "powierzchnia"]
+
+plt.barh(powdzi["Rok"], powdzi["Wartosc"])
+plt.yticks(powdzi["Rok"])
+plt.title("Dane o powierzchni działek")
+plt.savefig("zad3_zes5.pdf")
+plt.show()
