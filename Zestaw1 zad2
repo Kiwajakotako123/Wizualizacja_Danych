@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("produkcja1.xlsx")
+x = dane["Rok"]
+y = dane["Wartość"]
+plt.scatter(x, y, color='darkorange', marker='^')
+plt.title("Wykres wartosci względem lat w Polsce")
+plt.xlabel("Lata")
+yt = [1200000, 1400000, 1600000]
+ytz = ["1.2", "1.4", "1.6"]
+plt.ylabel("w lmn zl")
+plt.yticks(yt,ytz)
+plt.annotate(xy=[2018.5, 1150000], text="13:17")
+plt.grid()
+plt.savefig("zad2_zes1.png")
+plt.show()
