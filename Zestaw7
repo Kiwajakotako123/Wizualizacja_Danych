@@ -1,0 +1,71 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = [0.05, 0.05, 0.48, 0.7, 0.84]
+y = [0.05, 0.15, 0.84, 0.57, 0.32]
+plt.scatter(x,y, linewidths=5, color="brown")
+plt.grid()
+plt.title("Wykres punktowy - 5 punktów")
+plt.xlabel("Oś X")
+plt.ylabel("Oś Y")
+plt.tight_layout()
+plt.savefig("zad1_zes7.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("kolej7.xlsx")
+rok = dane["Rok"]
+wart = dane["Wartosc"]
+plt.plot(rok, wart, color="purple", linewidth=3)
+plt.annotate(xy=[2013, 19150], text="15:41")
+plt.xlabel("Rok")
+plt.ylabel("Wartości")
+plt.title("Dane o kolejach w Polsce w latach 2013-2019")
+plt.grid()
+plt.tight_layout()
+plt.savefig("zad2_zes7.jpg")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_csv("pekin7.csv", sep=';')
+państwo1 = dane[dane["Państwo"] == "Norwegia"]
+państwo2 = dane[dane["Państwo"] == "Niemcy"]
+państwo3 = dane[dane["Państwo"] == "Szwecja"]
+plt.subplot(2,2,1)
+plt.barh(państwo1["Państwo"],państwo1["Razem"])
+plt.barh(państwo2["Państwo"],państwo2["Razem"])
+plt.barh(państwo3["Państwo"],państwo3["Razem"])
+plt.xlabel("Łączna ilość zdobytych medali")
+plt.ylabel("Państwa")
+plt.legend()
+plt.subplot(2,2,2)
+plt.barh(państwo1["Państwo"],państwo1["Złote"], color = "gold")
+plt.barh(państwo2["Państwo"],państwo2["Złote"], color = "gold")
+plt.barh(państwo3["Państwo"],państwo3["Złote"], color = "gold")
+plt.xlabel("Złote medale")
+plt.ylabel("Państwa")
+plt.subplot(2,2,3)
+plt.barh(państwo1["Państwo"],państwo1["Srebrne"], color = "silver")
+plt.barh(państwo2["Państwo"],państwo2["Srebrne"], color = "silver")
+plt.barh(państwo3["Państwo"],państwo3["Srebrne"], color = "silver")
+plt.xlabel("Srebrne medale")
+plt.ylabel("Państwa")
+plt.subplot(2,2,4)
+plt.barh(państwo1["Państwo"],państwo1["Brązowe"], color = "peru")
+plt.barh(państwo2["Państwo"],państwo2["Brązowe"], color = "peru")
+plt.barh(państwo3["Państwo"],państwo3["Brązowe"], color = "peru")
+plt.xlabel("Brązowe medale")
+plt.ylabel("Państwa")
+plt.tight_layout()
+plt.savefig("zad3_zes7.pdf")
+plt.show()
