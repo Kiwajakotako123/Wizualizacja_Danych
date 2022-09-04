@@ -1,0 +1,78 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+x1 = np.arange(5)
+y = np.array([55,54,40,44,75])
+plt.bar(x1, y, color="aqua", label="C")
+y2= np.array([42, 35, 31, 30, 42])
+plt.bar(x1, y2, color="red", label="B")
+y3= np.array([30, 18, 21, 14, 16])
+plt.bar(x1, y3, color="orange", label="A")
+plt.title("Słupki potrójne")
+plt.legend()
+m = [2015, 2016, 2017, 2018, 2019]
+plt.xticks(x1, m, color="blue")
+plt.yticks(color="lightblue")
+plt.savefig("zad1_zes27.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("licea27.xlsx")
+explode = [0.1,0,0,0,0.1,0]
+lab=["DOLNOŚLĄSKIE","KUJAWSKO-POMORSKIE","LUBELSKIE","LUBUSKIE","ŁÓDZKIE","ZACHODNIOPOMORSKIE"]
+plt.pie(dane["Wartość"], autopct='%1.1f%%', explode=explode, shadow=True, labels=lab)
+plt.title("Wielkość podanych województw w roku 2018")
+plt.tight_layout()
+plt.savefig("zad2_zes27.jpg")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_csv("muzea27.csv", sep='_')
+lube = dane[dane["Województwo"] == "LUBELSKIE"]
+lubu = dane[dane["Województwo"] == "LUBUSKIE"]
+podl = dane[dane["Województwo"] == "PODLASKIE"]
+woj1 = lube["Województwo"]
+woj2 = lubu["Województwo"]
+woj3 = podl["Województwo"]
+rok1 = lube["2016"]
+rok2 = lube["2017"]
+rok3 = lube["2018"]
+rok4 = lube["2019"]
+rok5 = lubu["2016"]
+rok6 = lubu["2017"]
+rok7 = lubu["2018"]
+rok8 = lubu["2019"]
+rok9 = podl["2016"]
+rok10 = podl["2017"]
+rok11 = podl["2018"]
+rok12 = podl["2019"]
+plt.scatter(woj1,rok1, marker='1', color = 'orange', linewidth=5)
+plt.scatter(woj1,rok2, marker='1', color = 'purple', linewidth=5)
+plt.scatter(woj1,rok3, marker='1', color = 'khaki', linewidth=5)
+plt.scatter(woj1,rok4, marker='1', color = 'aqua', linewidth=5)
+plt.scatter(woj2,rok5, marker='2', color = 'black', linewidth=5)
+plt.scatter(woj2,rok6, marker='2', color = 'green', linewidth=5)
+plt.scatter(woj2,rok7, marker='2', color = 'brown', linewidth=5)
+plt.scatter(woj2,rok8, marker='2', color = 'gray', linewidth=5)
+plt.scatter(woj3,rok9, marker='3', color = 'yellow', linewidth=5)
+plt.scatter(woj3,rok10, marker='3', color = 'blue', linewidth=5)
+plt.scatter(woj3,rok11, marker='3', color = 'pink', linewidth=5)
+plt.scatter(woj3,rok12, marker='3', color = 'lime', linewidth=5)
+plt.title("Wartośc z podanych województw w latach 2016 - 2019")
+plt.xlabel("Województwa", color="greenyellow")
+plt.ylabel("Wartość", color="greenyellow")
+plt.grid()
+plt.tight_layout()
+plt.savefig("zad3_zes27.pdf")
+plt.show()
