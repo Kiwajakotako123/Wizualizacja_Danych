@@ -1,0 +1,92 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0,10,50)
+y1 = x**2+4
+y2 = -x**2-6
+yticks = np.linspace(-100,-20,5)
+fig, ax1 = plt.subplots()
+ax1.plot(x,y1,'orange', linestyle ='dashed', label='y=x^2+4')
+plt.ylabel('oś pionowa po lewej stronie', color = 'purple')
+plt.xlabel('oś pozioma', color = 'pink')
+plt.grid()
+plt.legend(loc='upper left')
+ax2 = ax1.twinx()
+ax2.plot(x,y2,'darkkhaki', linestyle ='dashdot', label='y=-x^2-6')
+plt.yticks(yticks)
+plt.ylabel('oś pionowa po prawej stronie', color = 'orange')
+plt.legend(loc='upper right')
+plt.title("Wykresy dwóch funkcji liniowych - wzory Latex")
+plt.tight_layout()
+plt.savefig("zad1_zes33.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+dane = pd.read_excel("handel33.xlsx")
+sklep = dane[dane["Wyszczególnienie"] == "sklepy"]
+x = np.arange(10)
+wart = sklep["Wartosc"]
+plt.bar(x,wart, color= "red", width=0.5)
+rok = [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]
+plt.xticks(x,rok)
+plt.annotate(xy=[2011, 100000], text = "Radek")
+plt.tight_layout()
+plt.savefig("zad2_zes33.jpg")
+plt.show()
+#
+#
+#
+#NIEDOKOŃCZONE ZADANIE
+import matplotlib.pyplot as plt
+import pandas as pd
+dane = pd.read_csv("wynagrodzenia33.csv", sep=';')
+dane2 = dane["2010"]
+dane3 = dane2.str.replace(',', '.')
+dane4 = dane3.astype(float)
+łód2 = dane4[4]
+dane5 = dane["2011"]
+dane6 = dane5.str.replace(',', '.')
+dane7 = dane6.astype(float)
+dane8 = dane["2012"]
+dane9 = dane8.str.replace(',', '.')
+dane10 = dane9.astype(float)
+dane11 = dane["2013"]
+dane12 = dane11.str.replace(',', '.')
+dane13 = dane12.astype(float)
+dane14= dane["2014"]
+dane15 = dane14.str.replace(',', '.')
+dane16 = dane15.astype(float)
+dane17 = dane["2015"]
+dane18 = dane17.str.replace(',', '.')
+dane19 = dane18.astype(float)
+dane20 = dane["2016"]
+dane21 = dane20.str.replace(',', '.')
+dane22 = dane21.astype(float)
+dane23 = dane["2017"]
+dane24 = dane23.str.replace(',', '.')
+dane25 = dane24.astype(float)
+dane26 = dane["2018"]
+dane27 = dane26.str.replace(',', '.')
+dane28 = dane27.astype(float)
+dane29 = dane["2019"]
+dane30 = dane29.str.replace(',', '.')
+dane31 = dane30.astype(float)
+łód = dane[dane["Województwo"] == "ŁÓDZKIE"]
+pom = dane[dane["Województwo"] == "POMORSKIE"]
+pod = dane[dane["Województwo"] == "PODLASKIE"]
+plt.plot(łód["Województwo"], łód2)
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
+plt.plot(łód["Województwo"], )
