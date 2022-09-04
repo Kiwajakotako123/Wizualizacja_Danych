@@ -1,0 +1,77 @@
+import matplotlib.pyplot as plt
+
+data1 = [15.70,25.58,16.86,21.51,12.79,7.56]
+data2 = [20.37,17.59,9.72,19.91,15.74,16.67]
+colors = ['brown', 'pink', 'burlywood', 'greenyellow', 'peru', 'blue']
+explode = [0,0.1,0,0,0,0]
+lab = ['A', 'B', 'C', 'D', 'E', 'F']
+plt.subplot(2, 2, 1)
+plt.pie(data1,colors = colors, explode = explode, labels=lab, autopct='%1.2f%%', shadow=True, startangle=40)
+plt.title("Lewo Góra")
+plt.subplot(2, 2, 4)
+plt.pie(data2,colors = colors, explode = explode, labels=lab, autopct='%1.2f%%', shadow=True, startangle=40)
+plt.title("Prawo Dół")
+plt.tight_layout()
+plt.savefig("zad1_zes21.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("ceny21.xlsx")
+m = dane[dane["Rodzaje towarów"] == "mąka pszenna - za 1kg"]
+k = dane[dane["Rodzaje towarów"] == "kasza jęczmienna - za 0,5kg"]
+rok1 = m["Rok"]
+wart1 = m["Wartość"]
+rok2 = k["Rok"]
+wart2 = k["Wartość"]
+plt.scatter(rok1, wart1, color="orange", marker="2", linewidths=4, label = "mąka")
+plt.scatter(rok2, wart2, color="purple", marker="^", linewidths=4, label = "kasza")
+plt.legend()
+plt.title("Wykres cen mąki i kaszy w latach 2014 - 2019")
+plt.ylabel("Wartość (w zł)")
+plt.xlabel("Rok")
+plt.annotate(xy=[2018.7, 2.20000], text="Radek")
+plt.grid()
+plt.tight_layout()
+plt.savefig("zad2_zes21.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_csv("wynagrodzenia21.csv", sep=';')
+dane["2010"] = pd.Series(dane["2010"], dtype=int)
+dane["2011"] = pd.Series(dane["2011"], dtype=int)
+dane["2012"] = pd.Series(dane["2012"], dtype=int)
+dane["2013"] = pd.Series(dane["2013"], dtype=int)
+dane["2014"] = pd.Series(dane["2014"], dtype=int)
+dane["2015"] = pd.Series(dane["2015"], dtype=int)
+dane["2016"] = pd.Series(dane["2016"], dtype=int)
+dane["2017"] = pd.Series(dane["2017"], dtype=int)
+dane["2018"] = pd.Series(dane["2018"], dtype=int)
+dane["2019"] = pd.Series(dane["2019"], dtype=int)
+
+dol = dane[dane["Województwo"] == "DOLNOŚLĄSKIE"]
+lub = dane[dane["Województwo"] == "LUBELSKIE"]
+plt.barh(lub["Województwo"], lub["2010"], color="olive", label="lub-2010")
+plt.barh(lub["Województwo"], lub["2011"], color="red", label="lub-2011")
+plt.barh(lub["Województwo"], lub["2012"], color="khaki", label="lub-2012")
+plt.barh(dol["Województwo"], dol["2010"], color="orange", label="dol-2010")
+plt.barh(lub["Województwo"], lub["2013"], color="purple", label="lub-2013")
+plt.barh(dol["Województwo"], dol["2011"], color="gray", label="dol-2011")
+plt.barh(dol["Województwo"], dol["2012"], color="black", label="dol-2012")
+plt.barh(dol["Województwo"], dol["2013"], color="aqua", label="dol-2013")
+plt.title("Wartośc z województwa dolnośląskiego i lubuskiego w latach 2010 - 2013")
+plt.ylabel("Województwa")
+plt.xlabel("Wartość")
+plt.legend()
+plt.tight_layout()
+plt.savefig("zad3_zes21.pdf")
+plt.show()
