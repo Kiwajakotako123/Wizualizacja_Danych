@@ -1,0 +1,72 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0,10,50)
+y1 = x+4
+y2 = -x-6
+yticks = np.linspace(-16,-6,6)
+fig, ax1 = plt.subplots()
+ax1.plot(x,y1,'orange', linestyle ='dashed', label='y=x+4')
+plt.ylabel('oś pionowa po lewej stronie', color = 'lightgreen')
+plt.xlabel('oś pozioma', color = 'pink')
+plt.grid()
+plt.legend(loc='upper left')
+ax2 = ax1.twinx()
+ax2.plot(x,y2,'brown', linestyle ='dashdot', label='y=-x-6')
+plt.yticks(yticks)
+plt.ylabel('oś pionowa po prawej stronie', color = 'gray')
+plt.legend(loc='upper right')
+plt.title("Wykresy dwóch funkcji liniowych")
+plt.tight_layout()
+plt.savefig("zad1_zes10.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("linieautobusowe10.xlsx")
+rok = dane["Rok"]
+wart = dane["Wartosc"]
+plt.scatter(rok, wart, color="purple", marker="1", linewidths=3, label = "Wartość")
+plt.xticks(rok, rok)
+plt.xlabel("Rok")
+plt.ylabel("Wartości")
+plt.title("Dane o jednostkach miary w Polsce w latach 2014-2018")
+plt.annotate(xy=[2013.8, 11500], text="166271")
+plt.legend()
+plt.grid()
+plt.tight_layout()
+plt.savefig("zad2_zes10.jpg")
+plt.show()
+#
+#
+#
+#
+plt.xlabel("Wartosc")
+plt.title("ilosc autobusów w latach 2017-2018")
+plt.subplot(2,3,4)
+plt.barh(cia[1],cia[2])
+plt.yticks(rok, rok)
+plt.ylabel("Rok")
+plt.xlabel("Wartosc")
+plt.title("ilosc ciągników w latach 2017-2018")
+plt.subplot(2,3,5)
+plt.barh(moto[1],moto[2])
+plt.yticks(rok, rok)
+plt.xticks([0,0.2e6, 0.4e6, 0.6e6, 0.8e6, 1e6, 1.2e6, 1.4e6],[0, "0.2mln", "0.4mln", "0.6mln", "0.8mln", "1.0mln", "1.2mln", "1.4mln"])
+plt.ylabel("Rok")
+plt.xlabel("Wartosc")
+plt.title("ilosc motorów w latach 2017-2018")
+plt.subplot(2,3,6)
+plt.barh(motoro[1],motoro[2])
+plt.yticks(rok, rok)
+plt.xticks([0,0.2e6, 0.4e6, 0.6e6, 0.8e6, 1e6, 1.2e6, 1.4e6],[0, "0.2mln", "0.4mln", "0.6mln", "0.8mln", "1.0mln", "1.2mln", "1.4mln"])
+plt.ylabel("Rok")
+plt.xlabel("Wartosc")
+plt.title("ilosc motorowerów w latach 2017-2018")
+plt.tight_layout()
+plt.savefig("zad3_zes10.pdf")
+plt.show()
