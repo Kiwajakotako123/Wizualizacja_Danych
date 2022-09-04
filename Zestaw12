@@ -1,0 +1,67 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = [0.0, 1.0, 2.0, 3.0]
+color1 = ['steelblue', 'green', 'olive', 'gray']
+color2 = ['yellowgreen', 'saddlebrown', 'olive', 'orange']
+x1 = np.arange(0,len(x))
+y1 = [22, 15, 35, 17]
+y2 = [-35, -32, -3, -10]
+
+plt.subplot(1, 2, 1)
+plt.barh(x1, y2, color = color1)
+plt.yticks(x1,x)
+plt.title("1_2")
+plt.xlabel("Oś x lewa")
+plt.subplot(1, 2, 2)
+plt.barh(x1, y1, color = color2)
+plt.yticks(x1,x)
+plt.title("2_2")
+plt.xlabel("Oś x prawa")
+plt.tight_layout()
+plt.savefig("zad1_zes12.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("owce12.xlsx")
+rok = dane["Rok"]
+wart = dane["Wartość"]
+plt.scatter(rok, wart, color="orange", marker="2", linewidths=4)
+plt.xticks(rok, rok)
+plt.xlabel("Rok")
+plt.ylabel("Wartości")
+plt.title("Dane z okrecu czerwiec w Polsce w latach 2017-2020")
+plt.annotate(xy=[2017, 261224], text="31-08-2022")
+plt.grid()
+plt.tight_layout()
+plt.savefig("zad2_zes12.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_csv("sport12.csv", sep=';', header=None).T
+dane2 = dane.iloc[1:, :]
+dane2.columns =  dane.iloc[0,:]
+dane2["PopularnośćSport"] = pd.Series(dane2["PopularnośćSport"], dtype=int)
+m = dane2[dane2["Płeć"] == "Mężczyźni"]
+k = dane2[dane2["Płeć"] == "Kobiety"]
+lab = ['Piłka nożna', 'Koszykówka', 'Siatkówka', 'Inne']
+colors=['pink','orange','red','purple']
+plt.subplot(1,2,1)
+plt.pie(m["PopularnośćSport"], labels=lab, autopct='%1.0f%%', shadow=True)
+plt.title("Mężczyźni")
+plt.subplot(1,2,2)
+plt.pie(k["PopularnośćSport"], labels=lab, autopct='%1.0f%%', shadow=True)
+plt.title("Kobiety")
+plt.tight_layout()
+plt.savefig("zad3_zes12.pdf")
+plt.show()
