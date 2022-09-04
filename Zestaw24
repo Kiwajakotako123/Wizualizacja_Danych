@@ -1,0 +1,110 @@
+import matplotlib.pyplot as plt
+
+x = [12, 13.4, 13.5, 17.3]
+y = [15.8, 17.1, 13.8, 19.5]
+plt.scatter(x,y, linewidths=2, color="gray", marker='x')
+plt.grid()
+plt.title("Wykres punktowy - 4 krzyżyki")
+plt.ylabel("Oś pionowa", color = "pink")
+plt.xlabel("Oś pozioma", color = "khaki")
+plt.yticks(color="orange")
+plt.xticks(color="blue")
+plt.tight_layout()
+plt.savefig("zad1_zes24.png")
+plt.show()
+#
+#
+#
+#
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dane = pd.read_excel("handel24.xlsx")
+sklep = dane[dane["Wyszczególnienie"] == "sklepy"]
+plt.plot(sklep["Rok"],sklep["Wartosc"], color= "orange", linewidth = 3, linestyle = 'dashed')
+plt.annotate(xy=[2019, 320000], text = "Radosław")
+plt.grid()
+plt.title("sklepy w latach 2011 - 2020")
+plt.ylabel("Wartość")
+plt.xlabel("Lata")
+plt.tight_layout()
+plt.savefig("zad2_zes24.jpg")
+plt.show()
+#
+#
+#
+#PODZIAL NA KOSZYKI
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+dane = pd.read_csv("pogoda24.csv", sep=';')
+temp =dane["Temperatura"]
+kosz1 = temp.iloc[0:40]
+kosz2 = temp.iloc[40:80]
+kosz3 = temp.iloc[80:120]
+kosz4 = temp.iloc[120:160]
+kosz5= temp.iloc[160:200]
+opady =dane["Opad"]
+koszopad1 = opady.iloc[0:40]
+koszopad2 = opady.iloc[40:80]
+koszopad3 = opady.iloc[80:120]
+koszopad4 = opady.iloc[120:160]
+koszopad5= opady.iloc[160:200]
+wiatr =dane["Wiatr"]
+koszwiatr1 = wiatr.iloc[0:40]
+koszwiatr2 = wiatr.iloc[40:80]
+koszwiatr3 = wiatr.iloc[80:120]
+koszwiatr4 = wiatr.iloc[120:160]
+koszwiatr5= wiatr.iloc[160:200]
+x = np.arange(40)
+plt.subplot(5,3,1)
+plt.bar(x, kosz1, color = 'red', label = "temperatura")
+plt.legend()
+plt.title("Temperatury")
+plt.subplot(5,3,2)
+plt.bar(x, koszopad1, color = 'green', label = "Opady")
+plt.legend()
+plt.title("Opady")
+plt.subplot(5,3,3)
+plt.bar(x, koszwiatr1, color = 'aqua', label = "Wiatr")
+plt.legend()
+plt.title("Wiatr")
+plt.subplot(5,3,4)
+plt.bar(x, kosz2, color = 'red', label = "temperatura")
+plt.legend()
+plt.subplot(5,3,5)
+plt.bar(x, koszopad2, color = 'green', label = "Opady")
+plt.legend()
+plt.subplot(5,3,6)
+plt.bar(x, koszwiatr2, color = 'aqua', label = "Wiatr")
+plt.legend()
+plt.subplot(5,3,7)
+plt.bar(x, kosz3, color = 'red', label = "temperatura")
+plt.legend()
+plt.subplot(5,3,8)
+plt.bar(x, koszopad3, color = 'green', label = "Opady")
+plt.legend()
+plt.subplot(5,3,9)
+plt.bar(x, koszwiatr3, color = 'aqua', label = "Wiatr")
+plt.legend()
+plt.subplot(5,3,10)
+plt.bar(x, kosz4, color = 'red', label = "temperatura")
+plt.legend()
+plt.subplot(5,3,11)
+plt.bar(x, koszopad4, color = 'green', label = "Opady")
+plt.legend()
+plt.subplot(5,3,12)
+plt.bar(x, koszwiatr4, color = 'aqua', label = "Wiatr")
+plt.legend()
+plt.subplot(5,3,13)
+plt.bar(x, kosz5, color = 'red', label = "temperatura")
+plt.legend()
+plt.subplot(5,3,14)
+plt.bar(x, koszopad5, color = 'green', label = "Opady")
+plt.legend()
+plt.subplot(5,3,15)
+plt.bar(x, koszwiatr5, color = 'aqua', label = "Wiatr")
+plt.legend()
+plt.tight_layout()
+plt.show()
